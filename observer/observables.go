@@ -1,7 +1,7 @@
 package observer
 
 type Observable interface {
-	AddObserver(o Observer)
-	RemoveObserver(o Observer)
+	AddObserver(name string, o Observer)
+	RemoveObserver(name string)
 	NotifyObservers()
 }
