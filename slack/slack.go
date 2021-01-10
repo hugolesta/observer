@@ -25,21 +25,21 @@ func sendMessage(data string) {
 	req, err := http.NewRequest(http.MethodPost, apiURL+webhook, bytes.NewReader([]byte(msg)))
 
 	if err != nil {
-		log.Fatalf("no ser pudo crear el request: %v", err)
+		log.Fatalf("It couldnt create a new request : %v", err)
 	}
 
 	client := http.Client{}
 	resp, err := client.Do(req)
 
 	if err != nil {
-		log.Fatalf("no se pudo enviar el mensaje a slack: %v", err)
+		log.Fatalf("It couldn't send a new message via slack: %v", err)
 	}
 
 	defer resp.Body.Close()
 
 	if resp.StatusCode != 200 {
-		log.Fatalf("se obtuvo un código de respusta no esperado: %d", resp.StatusCode)
+		log.Fatalf("The error status is an unexpected error: %d", resp.StatusCode)
 	}
 
-	fmt.Println("mensaje enviado a")
+	fmt.Println("Message sent via slack")
 }
